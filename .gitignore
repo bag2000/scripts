@@ -1,2 +1,2 @@
 # Игнорировать SSH-ключи в роли ansible_user
-roles/ansible_user/files/authorized_keys
+ansible/roles/ansible_user/files/authorized_keys
