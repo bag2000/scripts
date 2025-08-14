@@ -11,7 +11,7 @@ ansible-playbook -i inventories/hosts playbooks/setup_ansible_user.yml -u root
 ```
 
 ### Что делает
-Установка пакета sudo на системах Debian/Ubuntu и RHEL/CentOS.
+Установка пакета sudo на системах Debian/Ubuntu и RHEL/CentOS. <br>
 Перезагрузка сервера после установки sudo (если требовалось).
 Создание группы и пользователя с заданными параметрами.
 Настройка домашней директории и shell пользователя.
