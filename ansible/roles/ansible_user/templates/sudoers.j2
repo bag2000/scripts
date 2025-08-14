@@ -1,0 +1,4 @@
+# Sudo permissions for {{ ansible_user_name }}
+{% for line in ansible_user_sudoers %}
+{{ line }}
+{% endfor %}

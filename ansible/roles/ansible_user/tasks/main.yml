@@ -1,0 +1,63 @@
+---
+- name: Установка sudo (Debian/Ubuntu)
+  apt:
+    name: sudo
+    state: present
+    update_cache: yes
+  register: sudo_installed
+  when: ansible_os_family == 'Debian'
+
+- name: Установка sudo (RHEL/CentOS)
+  yum:
+    name: sudo
+    state: present
+  register: sudo_installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Перезагрузка если sudo был установлен
+  reboot:
+    msg: "Перезагрука после установки sudo"
+    connect_timeout: 5
+    reboot_timeout: 600
+  when: sudo_installed.changed
+
+- name: Создание группы {{ ansible_user_groups }}
+  group:
+    name: "{{ ansible_user_groups }}"
+    state: present
+
+- name: Создание пользователя {{ ansible_user_name }}
+  user:
+    name: "{{ ansible_user_name }}"
+    groups: "{{ ansible_user_groups }}"
+    append: yes
+    shell: "{{ ansible_user_shell }}"
+    home: "{{ ansible_user_home }}"
+    state: present
+    system: no
+    create_home: yes
+
+- name: Создание папки {{ ansible_user_home }}/.ssh
+  file:
+    path: "{{ ansible_user_home }}/.ssh"
+    state: directory
+    owner: "{{ ansible_user_name }}"
+    group: "{{ ansible_user_name }}"
+    mode: 0700
+
+- name: Добавление публичного ключа
+  copy:
+    src: authorized_keys
+    dest: "{{ ansible_user_ssh_key }}"
+    owner: "{{ ansible_user_name }}"
+    group: "{{ ansible_user_name }}"
+    mode: 0600
+
+- name: Настраиваем sudoers для {{ ansible_user_name }}
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers.d/{{ ansible_user_name }}
+    owner: root
+    group: root
+    mode: 0440
+    validate: 'visudo -cf %s'

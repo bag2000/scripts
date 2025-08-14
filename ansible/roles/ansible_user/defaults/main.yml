@@ -1,0 +1,19 @@
+---
+# Имя пользователя
+ansible_user_name: ans
+
+# Группы пользователя
+ansible_user_groups: "sudo"
+
+# Домашний каталог
+ansible_user_home: "/home/{{ ansible_user_name }}"
+
+# Shell пользователя
+ansible_user_shell: "/bin/bash"
+
+# Путь к SSH-ключу (в самой системе)
+ansible_user_ssh_key: "{{ ansible_user_home }}/.ssh/authorized_keys"
+
+# Настройки sudoers
+ansible_user_sudoers:
+  - "{{ ansible_user_name }} ALL=(ALL) NOPASSWD: ALL"
