@@ -1,4 +1,4 @@
-# Для работы с Yubikey 5 FIDO с касанием
+### Для работы с Yubikey 5 FIDO с касанием
 ```bash
 # Генерируем ключ
 ssh-keygen -t ed25519-sk -O resident -f ~/.ssh/id_ed25519_sk_yubikey
@@ -15,5 +15,8 @@ Host test
   ControlPath ~/.ssh/ansible-%r@%h:%p
   ControlPersist 5m
   IdentitiesOnly yes
+
+# Запустить playbook
+ansible-playbook -i inventories/hosts playbooks/setup_ansible_user.yml -u ans 
 ```
 
