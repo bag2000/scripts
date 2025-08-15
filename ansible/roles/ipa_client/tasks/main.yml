@@ -1,0 +1,4 @@
+- name: Установка клиента на Debian
+  ansible.builtin.import_tasks:
+    file: debian.yml
+  when: ansible_facts['distribution'] == "Debian"

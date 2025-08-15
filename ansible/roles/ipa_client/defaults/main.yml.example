@@ -1,0 +1,19 @@
+---
+# Делать перезагрузку во время введения в домен
+reboot: yes
+
+# Доменное имя ip адрес ipa серверов
+ipa1_ip: 192.168.18.15
+ipa2_ip: 192.168.18.16
+ipa1_name: "ipa1.ipa.ex.corp"
+ipa2_name: "ipa2.ipa.ex.corp"
+ipa_realm: "IPA.EX.CORP"
+ipa_domain: "ipa.EX.corp"
+
+# Доменное имя и ip адрес AD серверов
+dc01_ip: "192.168.18.22"
+dc02_ip: "192.168.18.33"
+dc01_name: "ad1.ex.corp"
+dc02_name: "ad2.ex.corp"
+ad_realm: "EX.CORP"
+ad_domain: "ex.corp"
