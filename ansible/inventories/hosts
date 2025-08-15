@@ -1,2 +1,2 @@
 [servers]
-test-debian-12.ipa.t8.corp
+asa.ipa.t8.corp ansible_host=192.168.8.171

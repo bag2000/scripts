@@ -75,24 +75,7 @@
     mode: '0644'
   notify:
     - "Чистка sssd кэша"
-    - "sПерезапуск службы sssd"
-
-# - name: Останавливаем службу sssd
-#   ansible.builtin.service:
-#     name: sssd
-#     state: stopped
-#   when: false
-
-# - name: Чистим кэш sssd
-#   ansible.builtin.command:
-#     cmd: rm -rf /var/lib/sss/db/*
-#   when: false
-
-# - name: Запускаем службу sssd
-#   ansible.builtin.service:
-#     name: sssd
-#     state: started
-#   when: false
+    - "Перезапуск службы sssd"
 
 - name: Выполнить перезагрузку если нужно
   block:
