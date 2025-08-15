@@ -26,7 +26,7 @@
       - "{{ ipa2_ip }} {{ ipa2_name }}"
       - "{{ dc01_ip }} {{ dc01_name }}"
       - "{{ dc02_ip }} {{ dc02_name }}"
-      
+
 - name: Проверка переменных из vault
   debug:
     msg: "Пароль: {{ ipa_admin_pass }}"
@@ -35,10 +35,6 @@
   ansible.builtin.shell: "grep -sc {{ ipa_realm }} /etc/ipa/default.conf; exit 0"
   register: domain_check
   changed_when: false
-
-- name: Выводожу результат проверки
-  debug:
-    msg: "{{ domain_check.stdout }}"
 
 - name: Ввожу ПК в домен
   ansible.builtin.shell:
