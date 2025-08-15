@@ -2,7 +2,7 @@
 ansible/roles/ansible_user/files/authorized_keys
 
 # Игнорировать vault
-/home/ansi/projects/ansible/vars/secret.yml
+ansible/vars/secret.yml
 
 # Игнорировать названия и ip IPA AD
-/home/ansi/projects/ansible/roles/ipa_client/defaults/main.yml
+ansible/roles/ipa_client/defaults/main.yml
