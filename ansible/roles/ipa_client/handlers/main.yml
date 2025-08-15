@@ -1,0 +1,11 @@
+---
+- name: Чистка sssd кэша
+  ansible.builtin.command:
+    cmd: rm -rf /var/lib/sss/db/*
+  listen: "Чистка sssd кэша"
+
+- name: Перезапуск службы sssd
+  ansible.builtin.service:
+    name: sssd
+    state: restarted
+  listen: "Перезапуск службы sssd"
